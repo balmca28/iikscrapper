@@ -90,7 +90,10 @@ const singlePageScraperData = async(url,page)=>{
 }
 
 const getResults = async(url,type)=>{
- const browser = await puppeteer.launch({headless:false});
+ const browser = await puppeteer.launch({headless:false,args: [
+    '--no-sandbox',
+    '--disable-setuid-sandbox'
+]});
    const page = await browser.newPage();
    let  data = null
    if(type === 'single'){
