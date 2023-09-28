@@ -1,8 +1,8 @@
 const config = {
   host    : 'localhost',
-  user    : 'root',
-  password: '',
-  database: 'iikData',
+  user    : 'jalilgroup_balu',
+  password: 'B@lmca28',
+  database: 'balu_iikData',
   connectionLimit: 25,
 };
 
