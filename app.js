@@ -17,11 +17,11 @@ app.get('/single-page',async(req, res)=>{
     const result = await mysqlUtil. rawQuery("select * from data WHERE completed=0 LIMIT 1 ");
     console.log(result)
     let data=null;
-    // if(result?.length > 0){
-    //     data = await getResults(result[0]?.url,'single')
-    //     console.log(data)
-    //     await mysqlUtil.update("data", data,[["id", "=", result[0]?.id]]); 
-    // }
+    if(result?.length > 0){
+        data = await getResults(result[0]?.url,'single')
+        console.log(data)
+        await mysqlUtil.update("data", data,[["id", "=", result[0]?.id]]); 
+    }
     res.json(data);
 })
 
@@ -42,14 +42,14 @@ const mainPageScraperData = async(url,page)=>{
             if(id && title){
                 data.push({id,title,url,completed})
                 const result = await mysqlUtil.select("data",'*',[["id", "=", id]]);
-                // if(result?.length === 0){
-                // await mysqlUtil.insert("data", {
-                //     id,
-                //     title,
-                //     url,
-                //     completed
-                // }); 
-            //}
+                if(result?.length === 0){
+                await mysqlUtil.insert("data", {
+                    id,
+                    title,
+                    url,
+                    completed
+                }); 
+            }
             }
         })
         return {
