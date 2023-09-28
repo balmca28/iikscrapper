@@ -42,14 +42,14 @@ const mainPageScraperData = async(url,page)=>{
             if(id && title){
                 data.push({id,title,url,completed})
                 const result = await mysqlUtil.select("data",'*',[["id", "=", id]]);
-                if(result?.length === 0){
-                await mysqlUtil.insert("data", {
-                    id,
-                    title,
-                    url,
-                    completed
-            }); 
-            }
+                // if(result?.length === 0){
+                // await mysqlUtil.insert("data", {
+                //     id,
+                //     title,
+                //     url,
+                //     completed
+                // }); 
+            //}
             }
         })
         return {
