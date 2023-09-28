@@ -12,6 +12,10 @@ app.get('/main-page',async(req, res)=>{
     const data = await getResults(url,'main')
     res.json(data);
 })
+app.get('/',async(req, res)=>{
+    const data = 'Welcome';
+    res.json(data);
+})
 app.get('/single-page',async(req, res)=>{
     mysqlUtil.setConnection(config);
     const result = await mysqlUtil. rawQuery("select * from data WHERE completed=0 LIMIT 1 ");
