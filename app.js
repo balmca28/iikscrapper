@@ -17,11 +17,11 @@ app.get('/single-page',async(req, res)=>{
     const result = await mysqlUtil. rawQuery("select * from data WHERE completed=0 LIMIT 1 ");
     console.log(result)
     let data=null;
-    if(result?.length > 0){
-        data = await getResults(result[0]?.url,'single')
-        console.log(data)
-        await mysqlUtil.update("data", data,[["id", "=", result[0]?.id]]); 
-    }
+    // if(result?.length > 0){
+    //     data = await getResults(result[0]?.url,'single')
+    //     console.log(data)
+    //     await mysqlUtil.update("data", data,[["id", "=", result[0]?.id]]); 
+    // }
     res.json(data);
 })
 
